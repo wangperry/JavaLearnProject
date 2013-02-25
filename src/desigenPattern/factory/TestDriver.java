@@ -4,14 +4,14 @@ package desigenPattern.factory;
  * @date  : 2013-2-21 ионГ10:44:36
  * 
  */
-public class AppleDriver {
+public class TestDriver {
 	
 	public static void main(String[] args) {
-		AppleFactory factory1 = AppleFactory.getInstance();
+		ComputerFactory factory1 = ComputerFactory.getInstance();
 		
-		AppleFactory factory2 = AppleFactory.getInstance();
+		ComputerFactory factory2 = ComputerFactory.getInstance();
 		
-		System.out.println(factory1.produceApple());
+		System.out.println(factory1.produceComputer());
 		
 		System.out.println("factory1 == factory2 ? "+(factory1 == factory2));
 	}
