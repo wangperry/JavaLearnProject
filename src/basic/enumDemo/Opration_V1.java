@@ -1,7 +1,6 @@
 package basic.enumDemo;
 /**
  * @author E-mail: hwy1782@gmail.com
- * @date  : 2013-1-30 ����04:16:24
  */
 public enum Opration_V1 {
 	

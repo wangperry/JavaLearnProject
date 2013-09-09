@@ -1,2 +1,2 @@
-call mvn -U eclipse:clean eclipse:eclipse -DdownloadSources=true
+call mvn -U eclipse:clean eclipse:eclipse 
 @pause
