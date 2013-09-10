@@ -16,7 +16,7 @@ public class PayrollDay_v2_Drive {
 
 		double workHourse = 8;
 		
-		System.out.printf("%s work %f hours will get %f$",
+		System.out.printf("%s work %f hours will get %f ",
 				PayrollDay_v2.SAYURDAY,workHourse,PayrollDay_v2.SAYURDAY.pay(8, DEFAULT_PAY_RATE));
 	}
 

@@ -9,8 +9,8 @@ import java.util.Date;
 
 /**
  * @author E-mail: hwy1782@gmail.com
- * @date : 2013-2-21 下午12:08:35
- * transient 的用法
+ * @date : 2013-2-21 12:08:35
+ * transient
  */
 public class Logon implements Serializable{
 	

@@ -1,35 +1,35 @@
 package desigenPattern.factory;
 /**
  * @author E-mail: hwy1782@gmail.com
- * @date  : 2013-2-21 ÉÏÎç10:36:53
- * 
- * ¾²Ì¬¹¤³§·½·¨ÓÅµã£º
- * 1.ºÍ¹¹ÔìÆ÷Ïà±È£¬ËûÓĞÃû³Æ¡£
- * 2.²»±ØÃ¿´Îµ÷ÓÃµÄÊ±ºò¶¼ĞÂ½¨Ò»¸ö¶ÔÏó¡£
- * 3.¿ÉÒÔ·µ»ØÔ­ÀàĞÍµÄÈÎºÎ×ÓÀàĞÍ¶ÔÏó¡£
- * 4.ÔÚ´´½¨²ÎÊı»¯ÀàĞÍµÄÊµÀıµÄÊ±ºò£¬´úÂë¸ü¼ò½à£º±ÈÈç£ºMap<String,Integer> maps = Maps.newHashMap();
- * 
+ * @date  : 2013-2-21 ä¸Šåˆ10:36:53
+ *
+ * é™æ€å·¥å‚æ–¹æ³•ä¼˜ç‚¹ï¼š
+ * 1.å’Œæ„é€ å™¨ç›¸æ¯”ï¼Œä»–æœ‰åç§°ã€‚
+ * 2.ä¸å¿…æ¯æ¬¡è°ƒç”¨çš„æ—¶å€™éƒ½æ–°å»ºä¸€ä¸ªå¯¹è±¡ã€‚
+ * 3.å¯ä»¥è¿”å›åŸç±»å‹çš„ä»»ä½•å­ç±»å‹å¯¹è±¡ã€‚
+ * 4.åœ¨åˆ›å»ºå‚æ•°åŒ–ç±»å‹çš„å®ä¾‹çš„æ—¶å€™ï¼Œä»£ç æ›´ç®€æ´ï¼šæ¯”å¦‚ï¼šMap<String,Integer> maps = Maps.newHashMap();
+ *
  */
 public class ComputerFactory {
-	
-	private static ComputerFactory factory;
-	
-	private ComputerFactory() {}
-	
-	public static ComputerFactory getInstance(){
-		if(factory == null){
-			factory = new ComputerFactory();
-			return factory;
-		}
-		return factory;
-	}
-	
-	public Computer produceComputer(){
-		return new Computer.Build("ÁªÏë", "7795").price(4550).produceDate("2012-12").screenSize(14.5).build();
-	}
-	
-	public Computer2 produceComputer2(){
-		return new Computer2.ComputerBuild("ÁªÏë", "7795").build();
-	}
-	
+
+    private static ComputerFactory factory;
+
+    private ComputerFactory() {}
+
+    public static ComputerFactory getInstance(){  //åŒå‘æ£€æŸ¥é”
+        if(factory == null){
+            factory = new ComputerFactory();
+            return factory;
+        }
+        return factory;
+    }
+
+    public Computer produceComputer(){
+        return new Computer.Build("è”æƒ³", "7795").price(4550).produceDate("2012-12").screenSize(14.5).build();
+    }
+
+    public Computer2 produceComputer2(){
+        return new Computer2.ComputerBuild("è”æƒ³", "7795").build();
+    }
+
 }

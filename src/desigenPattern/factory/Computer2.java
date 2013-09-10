@@ -3,80 +3,80 @@ package desigenPattern.factory;
 
 /**
  * @author E-mail: hwy1782@gmail.com
- * @date  : 2013-2-21 ÉÏÎç10:35:53
- * 
- * Build ¹¹ÔìÆ÷Ä£Ê½
- * 
- * Óë°æ±¾1±È½Ï£¬
- * 1. Í¨¹ıComputer2.Build À´ÊµÏÖ Builder ½Ó¿Ú
- * 2. ¹¹Ôì·½·¨ÖĞÌí¼Ó±£»¤ĞÔ¿½±´
- * 3. ¹¹Ôì·½·¨ÖĞÌí¼Ó²ÎÊı¼ìÑé¡££¨²ÎÊıĞ£ÑéĞèÒªÔÚ¶ÔÏóÓòÖĞ½øĞĞ£¬²»ÄÜÔÚbuildÓòÖĞ½øĞĞ£¬ÒòÎªbuildÓò²»ÄÜ±£Ö¤¡£²Î¼û¡¶effective java¡·39Ìõ£©
- * 
+ * @date  : 2013-2-21 ä¸Šåˆ10:35:53
+ *
+ * Build æ„é€ å™¨æ¨¡å¼
+ *
+ * ä¸ç‰ˆæœ¬1æ¯”è¾ƒï¼Œ
+ * 1. é€šè¿‡Computer2.Build æ¥å®ç° Builder æ¥å£
+ * 2. æ„é€ æ–¹æ³•ä¸­æ·»åŠ ä¿æŠ¤æ€§æ‹·è´
+ * 3. æ„é€ æ–¹æ³•ä¸­æ·»åŠ å‚æ•°æ£€éªŒã€‚ï¼ˆå‚æ•°æ ¡éªŒéœ€è¦åœ¨å¯¹è±¡åŸŸä¸­è¿›è¡Œï¼Œä¸èƒ½åœ¨buildåŸŸä¸­è¿›è¡Œï¼Œå› ä¸ºbuildåŸŸä¸èƒ½ä¿è¯ã€‚å‚è§ã€Šeffective javaã€‹39æ¡ï¼‰
+ *
  */
 public class Computer2 {
 
-	private String name;
-	private String type;
-	private double screenSize;
-	private String produceDate;
-	private double price;
-	
-	public static class ComputerBuild implements Builder<Computer2>{
-		
-		private String name;
-		private String type;
-		private double screenSize;
-		private String produceDate;
-		private double price;
-		
-		ComputerBuild(String name,String type){
-			this.name = name;
-			this.type = type;
-		}
-		
-		public ComputerBuild screenSize(double size) {
-			this.screenSize = size;
-			return this;
-		}
-		
-		public ComputerBuild produceDate(String date) {
-			this.produceDate = date;
-			return this;
-		}
-		
-		public ComputerBuild price(double price) {
-			this.price = price;
-			return this;
-		}
-		
-		@Override
-		public Computer2 build(){
-			return new Computer2(this);
-		}
-		
-	}
-	
-	private Computer2(ComputerBuild build) {
-		this.name = new String(build.name); //±£»¤ĞÔ¿½±´
-		this.type = build.type;
-		this.screenSize = build.screenSize;
-		this.produceDate = build.produceDate;
-		this.price = build.price;
-		
-		//²ÎÊıĞ£Ñé
-		if(name == null){
-			throw new IllegalArgumentException("name is null");
-		}
-		
-		if(type == null){
-			throw new IllegalArgumentException("type is null");
-		}
-	}
-	
-	@Override
-	public String toString() {
-		return "[computer name = "+name+" type = "+type+" screenSize = "+screenSize+" price "+
-				price+" produceDate "+produceDate+"]";
-	}
-	
+    private String name;
+    private String type;
+    private double screenSize;
+    private String produceDate;
+    private double price;
+
+    public static class ComputerBuild implements Builder<Computer2>{
+
+        private String name;
+        private String type;
+        private double screenSize;
+        private String produceDate;
+        private double price;
+
+        ComputerBuild(String name,String type){
+            this.name = name;
+            this.type = type;
+        }
+
+        public ComputerBuild screenSize(double size) {
+            this.screenSize = size;
+            return this;
+        }
+
+        public ComputerBuild produceDate(String date) {
+            this.produceDate = date;
+            return this;
+        }
+
+        public ComputerBuild price(double price) {
+            this.price = price;
+            return this;
+        }
+
+        @Override
+        public Computer2 build(){
+            return new Computer2(this);
+        }
+
+    }
+
+    private Computer2(ComputerBuild build) {
+        this.name = new String(build.name); //ä¿æŠ¤æ€§æ‹·è´
+        this.type = build.type;
+        this.screenSize = build.screenSize;
+        this.produceDate = build.produceDate;
+        this.price = build.price;
+
+        //å‚æ•°æ ¡éªŒ
+        if(name == null){
+            throw new IllegalArgumentException("name is null");
+        }
+
+        if(type == null){
+            throw new IllegalArgumentException("type is null");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "[computer name = "+name+" type = "+type+" screenSize = "+screenSize+" price "+
+                price+" produceDate "+produceDate+"]";
+    }
+
 }

@@ -1,13 +1,16 @@
 package desigenPattern.factory;
+
+import org.apache.commons.lang.builder.ToStringBuilder;
+
 /**
  * @author E-mail: hwy1782@gmail.com
- * @date  : 2013-2-21 ÉÏÎç10:35:53
+ * @date  : 2013-2-21 ï¿½ï¿½ï¿½ï¿½10:35:53
  * 
- * Build ¹¹ÔìÆ÷Ä£Ê½
+ * Build ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½
  * 
- * build ¹¹ÔìÆ÷Ä£Ê½£º Ê¹ÓÃÄÚ²¿¾²Ì¬Àà
+ * build ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ Ê¹ï¿½ï¿½ï¿½Ú²ï¿½ï¿½ï¿½Ì¬ï¿½ï¿½
  * 
- * µ±ÀàµÄ¹¹ÔìÆ÷»òÕß¾²Ì¬¹¤³§ÖÐÓÐ¶à¸ö²ÎÊý£¬²ÉÓÃ¹¹ÔìÆ÷Ä£Ê½²»´í
+ * ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß¾ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¹ï¿½ï¿½ï¿½ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½
  * 
  */
 public class Computer {
@@ -61,8 +64,9 @@ public class Computer {
 	
 	@Override
 	public String toString() {
-		return "[computer name = "+name+" type = "+type+" screenSize = "+screenSize+" price "+
-				price+" produceDate "+produceDate+"]";
+	/*	return "[computer name = "+name+" type = "+type+" screenSize = "+screenSize+" price "+
+				price+" produceDate "+produceDate+"]";*/
+        return ToStringBuilder.reflectionToString(this);
 	}
 	
 }

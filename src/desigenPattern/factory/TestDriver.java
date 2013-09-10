@@ -1,8 +1,7 @@
 package desigenPattern.factory;
 /**
  * @author E-mail: hwy1782@gmail.com
- * @date  : 2013-2-21 ионГ10:44:36
- * 
+ *
  */
 public class TestDriver {
 	

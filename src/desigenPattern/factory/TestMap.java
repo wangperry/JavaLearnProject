@@ -7,8 +7,7 @@ import org.junit.Test;
 
 /**
  * @author E-mail: hwy1782@gmail.com
- * @date  : 2013-2-22 обнГ04:40:19
- * 
+ *
  */
 public class TestMap {
 

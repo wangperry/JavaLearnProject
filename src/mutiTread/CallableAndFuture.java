@@ -7,72 +7,72 @@ import java.util.concurrent.Future;
 
 /**
  * @author E-mail: hwy1782@gmail.com
- * @date  : 2013-2-21 ÉÏÎç09:22:55
- * 
- * Callable ºÍ Future½Ó¿Ú   
- * CallableÊÇÀàËÆÓÚRunnableµÄ½Ó¿Ú£¬ÊµÏÖCallable½Ó¿ÚµÄÀàºÍÊµÏÖRunnableµÄÀà¶¼ÊÇ¿É±»ÆäËüÏß³ÌÖ´ÐÐµÄÈÎÎñ¡£   
- * CallableºÍRunnableÓÐ¼¸µã²»Í¬£º   
- * £¨1£©Callable¹æ¶¨µÄ·½·¨ÊÇcall()£¬¶øRunnable¹æ¶¨µÄ·½·¨ÊÇrun().   
- * £¨2£©CallableµÄÈÎÎñÖ´ÐÐºó¿É·µ»ØÖµ£¬¶øRunnableµÄÈÎÎñÊÇ²»ÄÜ·µ»ØÖµµÄ¡£   
- * £¨3£©call()·½·¨¿ÉÅ×³öÒì³££¬¶ørun()·½·¨ÊÇ²»ÄÜÅ×³öÒì³£µÄ¡£   
- * £¨4£©ÔËÐÐCallableÈÎÎñ¿ÉÄÃµ½Ò»¸öFuture¶ÔÏó£¬   
- * Future ±íÊ¾Òì²½¼ÆËãµÄ½á¹û¡£ËüÌá¹©ÁË¼ì²é¼ÆËãÊÇ·ñÍê³ÉµÄ·½·¨£¬ÒÔµÈ´ý¼ÆËãµÄÍê³É£¬²¢¼ìË÷¼ÆËãµÄ½á¹û¡£   
- * Í¨¹ýFuture¶ÔÏó¿ÉÁË½âÈÎÎñÖ´ÐÐÇé¿ö£¬¿ÉÈ¡ÏûÈÎÎñµÄÖ´ÐÐ£¬»¹¿É»ñÈ¡ÈÎÎñÖ´ÐÐµÄ½á¹û¡£
- * 
+ * @date  : 2013-2-21 ä¸Šåˆ09:22:55
+ *
+ * Callable å’Œ FutureæŽ¥å£   
+ * Callableæ˜¯ç±»ä¼¼äºŽRunnableçš„æŽ¥å£ï¼Œå®žçŽ°CallableæŽ¥å£çš„ç±»å’Œå®žçŽ°Runnableçš„ç±»éƒ½æ˜¯å¯è¢«å…¶å®ƒçº¿ç¨‹æ‰§è¡Œçš„ä»»åŠ¡ã€‚   
+ * Callableå’ŒRunnableæœ‰å‡ ç‚¹ä¸åŒï¼š   
+ * ï¼ˆ1ï¼‰Callableè§„å®šçš„æ–¹æ³•æ˜¯call()ï¼Œè€ŒRunnableè§„å®šçš„æ–¹æ³•æ˜¯run().   
+ * ï¼ˆ2ï¼‰Callableçš„ä»»åŠ¡æ‰§è¡ŒåŽå¯è¿”å›žå€¼ï¼Œè€ŒRunnableçš„ä»»åŠ¡æ˜¯ä¸èƒ½è¿”å›žå€¼çš„ã€‚   
+ * ï¼ˆ3ï¼‰call()æ–¹æ³•å¯æŠ›å‡ºå¼‚å¸¸ï¼Œè€Œrun()æ–¹æ³•æ˜¯ä¸èƒ½æŠ›å‡ºå¼‚å¸¸çš„ã€‚   
+ * ï¼ˆ4ï¼‰è¿è¡ŒCallableä»»åŠ¡å¯æ‹¿åˆ°ä¸€ä¸ªFutureå¯¹è±¡ï¼Œ   
+ * Future è¡¨ç¤ºå¼‚æ­¥è®¡ç®—çš„ç»“æžœã€‚å®ƒæä¾›äº†æ£€æŸ¥è®¡ç®—æ˜¯å¦å®Œæˆçš„æ–¹æ³•ï¼Œä»¥ç­‰å¾…è®¡ç®—çš„å®Œæˆï¼Œå¹¶æ£€ç´¢è®¡ç®—çš„ç»“æžœã€‚   
+ * é€šè¿‡Futureå¯¹è±¡å¯äº†è§£ä»»åŠ¡æ‰§è¡Œæƒ…å†µï¼Œå¯å–æ¶ˆä»»åŠ¡çš„æ‰§è¡Œï¼Œè¿˜å¯èŽ·å–ä»»åŠ¡æ‰§è¡Œçš„ç»“æžœã€‚
+ *
  * ref : http://xiangkun.iteye.com/blog/630135
- * 
+ *
  */
 public class CallableAndFuture {
 
-	public static class MyCallable implements Callable{
-		
-		int flag;
-		
-		public MyCallable(int flag) {
-			this.flag = flag;
-		}
-		
-		@Override
-		public String call() throws Exception {
-			if(flag == 0){
-				return "flag is 0";
-			}else if(flag == 1){
-				try{
-					while (true) {
-						System.out.println("looping...");
-						Thread.sleep(2000);
-					}
-				}catch (InterruptedException e) {
-					System.out.println("Interrupte");
-				}
-				return "false";
-			}else{
-				throw new Exception("bad flag");
-			}
-		}
-	}
-	
-	public static void main(String[] args) {
-		MyCallable task1 = new MyCallable(0);
-		MyCallable task2 = new MyCallable(1);
-		MyCallable task3 = new MyCallable(2);
-		
-		ExecutorService service = Executors.newFixedThreadPool(3);
-		
-		try{
-			Future future1 = service.submit(task1);
-			System.out.println("task1 =>"+future1.get());
-			
-			Future future2 = service.submit(task2);
-			Thread.sleep(5000);
-			System.out.println("task2 cancle=>"+future2.cancel(true));
-			
-			Future future3 = service.submit(task3);
-			System.out.println("task3 =>"+future3.get());
-		}catch (Exception e) {
-			System.out.println(e);
-		}
-		service.shutdown();
-	}
-	
+    public static class MyCallable implements Callable{
+
+        int flag;
+
+        public MyCallable(int flag) {
+            this.flag = flag;
+        }
+
+        @Override
+        public String call() throws Exception {
+            if(flag == 0){
+                return "flag is 0";
+            }else if(flag == 1){
+                try{
+                    while (true) {
+                        System.out.println("looping...");
+                        Thread.sleep(2000);
+                    }
+                }catch (InterruptedException e) {
+                    System.out.println("Interrupte");
+                }
+                return "false";
+            }else{
+                throw new Exception("bad flag");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        MyCallable task1 = new MyCallable(0);
+        MyCallable task2 = new MyCallable(1);
+        MyCallable task3 = new MyCallable(2);
+
+        ExecutorService service = Executors.newFixedThreadPool(3);
+
+        try{
+            Future future1 = service.submit(task1);
+            System.out.println("task1 =>"+future1.get());
+
+            Future future2 = service.submit(task2);
+            Thread.sleep(5000);
+            System.out.println("task2 cancle=>"+future2.cancel(true));
+
+            Future future3 = service.submit(task3);
+            System.out.println("task3 =>"+future3.get());
+        }catch (Exception e) {
+            System.out.println(e);
+        }
+        service.shutdown();
+    }
+
 }
