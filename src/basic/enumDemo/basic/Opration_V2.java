@@ -1,4 +1,4 @@
-package basic.enumDemo;
+package basic.enumDemo.basic;
 /**
  * @author E-mail: hwy1782@gmail.com
  * @date  : 2013-1-30 04:16:24

@@ -1,4 +1,4 @@
-package nio.mina.io;
+package nio.mina.io.ioLearn.iobuffer;
 import java.nio.ByteBuffer;
 
 public class SimpleBufferAllocator implements IoBufferAllocator{

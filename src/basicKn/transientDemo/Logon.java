@@ -25,6 +25,8 @@ public class Logon implements Serializable{
 		password = pwd;
 	}
 
+    Logon() {}
+
 	public String toString() {
 		String pwd = (password == null) ? "(n/a)" : password;
 		return "logon info: \n " + "username: " + username + "\n date: "
@@ -33,9 +35,10 @@ public class Logon implements Serializable{
 
 	public static void main(String[] args) {
 		Logon a = new Logon("Hulk", "myLittlePony");
+		Logon b = new Logon();
 		System.out.println("logon a = " + a);
 		try {
-			ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream("Logon.out"));
+			ObjectOutputStream o = new ObjectOutputStream(new FileOutputStream("Logon.txt"));
 			o.writeObject(a);
 			o.close();
 			// Delay:
@@ -47,11 +50,13 @@ public class Logon implements Serializable{
 			*/
 			Thread.sleep(2000);
 			// Now get them back:
-			ObjectInputStream in = new ObjectInputStream(new FileInputStream("Logon.out"));
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream("Logon.txt"));
 			System.out.println("\nRecovering object at " + new Date());
-			a = (Logon) in.readObject();
-			
-			System.out.println("logon a = " + a);
+//			a = (Logon) in.readObject();
+			b = (Logon) in.readObject();
+
+//			System.out.println("logon a = " + a);
+			System.out.println("logon b = " + b);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

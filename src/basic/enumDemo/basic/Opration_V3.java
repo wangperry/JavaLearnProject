@@ -1,4 +1,4 @@
-package basic.enumDemo;
+package basic.enumDemo.basic;
 
 import java.util.Map;
 
