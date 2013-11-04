@@ -1,0 +1,10 @@
+<osworkflow>
+    <!--
+        指明了我们准备使用内存 (MemoryWorkflowStore) 来保存流程数据
+        可以减少设置数据库的相关信息，减少出问题的可能性。用内存持久化对于测试来说是非常方便的
+    -->
+    <persistence class="com.opensymphony.workflow.spi.memory.MemoryWorkflowStore"/>
+    <factory class="com.opensymphony.workflow.loader.XMLWorkflowFactory">
+        <property key="resource" value="workflows.xml" />
+    </factory>
+</osworkflow>

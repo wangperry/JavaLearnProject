@@ -2,8 +2,6 @@
 package basic.enumDemo.vendingMachine;
 
 
-import org.junit.Test;
-
 import java.util.Random;
 
 public enum Input {

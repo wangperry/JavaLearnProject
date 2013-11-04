@@ -73,11 +73,11 @@ public class TextFile extends ArrayList<String> {
         }
     }
 
-    // Simple test:
+    // Simple nio:
     public static void main(String[] args) {
         String file = read("TextFile.java");
-        write("test.txt", file);
-        TextFile text = new TextFile("test.txt");
+        write("nio.txt", file);
+        TextFile text = new TextFile("nio.txt");
         text.write("test2.txt");
         // Break into unique sorted list of words:
         TreeSet<String> words = new TreeSet<String>(

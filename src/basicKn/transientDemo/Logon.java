@@ -10,7 +10,8 @@ import java.util.Date;
 /**
  * @author E-mail: hwy1782@gmail.com
  * @date : 2013-2-21 12:08:35
- * transient
+ * 持久化的时候，使用transient不序列化密码字段
+ *
  */
 public class Logon implements Serializable{
 	

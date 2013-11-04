@@ -1,4 +1,4 @@
-package mutiTread;
+package mutiThread;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;

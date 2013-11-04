@@ -53,7 +53,7 @@ class Mail {
                 ", Return address: " + returnAddress;
     }
 
-    // Generate test Mail:
+    // Generate nio Mail:
     public static Mail randomMail() {
         Mail m = new Mail();
         m.generalDelivery = Enums.random(GeneralDelivery.class);

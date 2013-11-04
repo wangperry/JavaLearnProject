@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE workflow PUBLIC
+        "-//OpenSymphony Group//DTD OSWorkflow 2.7//EN"
+        "http://www.opensymphony.com/osworkflow/workflow_2_7.dtd">
+<workflow>
+    <initial-actions>
+        <action id="1" name="Start Workflow">
+            <results>
+                <!--old-status属性是用来指明当前步骤完成以后的状态是什么，在大多数的应用中，通常用"Finished"表示-->
+                <unconditional-result old-status="Finished" status="Queued" step="1"/>
+            </results>
+        </action>
+    </initial-actions>
+    <!-- 初稿 -->
+    <steps>
+        <step id="1" name="First Draft">
+            <actions>
+                <action id="1" name="Start First Draft">
+                    <!--保证了动作1只能在当前状态为“Queued”的时候才能被调用，也就是说在初始化动作被调用以后-->
+                    <restrict-to>
+                        <conditions>
+                            <condition type="class">
+                                <arg name="class.name">com.opensymphony.workflow.util.StatusCondition</arg>
+                                <arg name="status">Queued</arg>
+                            </condition>
+                        </conditions>
+                    </restrict-to>
+<!--
+                    1) 通过一个函数设置“caller”变量在当前的环境设置里。
+                    2) 根据“caller”变量来设置“owner”属性
+-->
+                    <pre-functions>
+                        <function type="class">
+                            <arg name="class.name">com.opensymphony.workflow.util.Caller</arg>
+                        </function>
+                    </pre-functions>
+                    <results>
+                        <unconditional-result old-status="Finished" status="Underway" step="1"  owner="${caller}"/>
+                    </results>
+                </action>
+                <action id="2" name="Finish First Draft">
+                    <restrict-to>
+                        <!--“allow owner only”。这样能够保证只有开始撰写这份草稿的用户才能完成它。而状态条件确保了只有在“Underway”状态下的流程才能调用“finish first draft”动作。-->
+                        <conditions type="AND">
+                            <condition type="class">
+                                <arg name="class.name">com.opensymphony.workflow.util.StatusCondition</arg>
+                                <arg name="status">Underway</arg>
+                            </condition>
+                            <condition type="class">
+                                <arg name="class.name">com.opensymphony.workflow.util.AllowOwnerOnlyCondition</arg>
+                            </condition>
+                        </conditions>
+                    </restrict-to>
+                    <results>
+                        <unconditional-result old-status="Finished" status="Queued" step="2"/>
+                    </results>
+                </action>
+            </actions>
+        </step>
+        <step id="2" name="finished" />
+    </steps>
+
+</workflow>
